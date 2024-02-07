@@ -71,15 +71,84 @@
 # Use `Model.destroy_all` code.
 # TODO!
 
-rails generate model Movies 
-rails generate model 
+Movie.destroy_all 
+Studio.destroy_all
+Actor.destroy_all
+Role.destroy_all 
 
 # Generate models and tables, according to the domain model.
 # TODO!
 
+#Run the following prompts in the terminal: 
+#rails generate model Movie 
+#rails generate model Studio 
+#rails generate model Actor 
+#rails generate model Role 
+
 # Insert data into the database that reflects the sample data shown above.
 # Do not use hard-coded foreign key IDs.
 # TODO!
+
+#Populate Studio table 
+
+studio = Studio.new
+studio["name"] = "Warner Bros."
+studio.save
+
+#Populate the Actor table 
+actor = Actor.new 
+actor["name"] = "Christian Bale"
+actor.save
+
+actor = Actor.new 
+actor["name"] = "Michael Caine"
+actor.save
+
+actor = Actor.new 
+actor["name"] = "Liam Neeson"
+actor.save
+
+actor = Actor.new 
+actor["name"] = "Katie Holmes"
+actor.save
+
+actor = Actor.new 
+actor["name"] = "Gary Oldman"
+actor.save
+
+actor = Actor.new 
+actor["name"] = "Heath Ledger"
+actor.save
+
+actor = Actor.new 
+actor["name"] = "Aaron Eckhart"
+actor.save
+
+actor = Actor.new 
+actor["name"] = "Maggie Gyllenhaal"
+actor.save
+
+actor = Actor.new 
+actor["name"] = "Tom Hardy"
+actor.save
+
+actor = Actor.new 
+actor["name"] = "Joseph Gordon-Levitt"
+actor.save
+
+actor = Actor.new 
+actor["name"] = "Anne Hathaway"
+actor.save
+
+#Populate the Movie table 
+
+movie = Movie.new
+movie["name"] = 
+movie["year_released"] = 
+movie["rated"] = 
+movie["studio_id"] = 
+
+#rails db:migrate to execute the migration tables
 
 # Prints a header for the movies output
 puts "Movies"
