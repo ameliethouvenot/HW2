@@ -140,13 +140,65 @@ actor = Actor.new
 actor["name"] = "Anne Hathaway"
 actor.save
 
+
+
+#Query to find the studio within the studio table 
+warner = Studio.find_by({"name" => "Warner Bros."})
+
 #Populate the Movie table 
+movie = Movie.new
+movie["name"] = "Batman Begins"
+movie["year_released"] = "2005"
+movie["rated"] = "PG-13"
+movie["studio_id"] = warner["id"]
+movie.save 
 
 movie = Movie.new
-movie["name"] = 
-movie["year_released"] = 
-movie["rated"] = 
-movie["studio_id"] = 
+movie["name"] = "The Dark Knight"
+movie["year_released"] = "2008"
+movie["rated"] = "PG-13"
+movie["studio_id"] = warner["id"]
+movie.save 
+
+movie = Movie.new
+movie["name"] = "The Dark Knight Rises"
+movie["year_released"] = "2012"
+movie["rated"] = "PG-13"
+movie["studio_id"] = warner["id"]
+movie.save 
+
+#Query to find a movie within the Movie Table 
+batman = Movie.find_by({"name" => "Batman Begins"})
+knight = Movie.find_by({"name" => "The Dark Knight"})
+knightrises = Movie.find_by({"name" => "The Dark Knight Rises"})
+
+#Query to find the actors within the Actor Table 
+christian = Actor.find_by({"name" => "Christian Bale"})
+michael = Actor.find_by({"name" => "Michael Caine"})
+liam = Actor.find_by({"name" => "Liam Neeson"})
+katie = Actor.find_by({"name" => "Katie Holmes"})
+gary =  Actor.find_by({"name" => "Gary Oldman"})
+
+#Populate the Roles table 
+
+role = Role.new
+role["character_name"] = "Alfred"
+role["movie_id"] = batman["id"]
+role["actor_id"] = michael["id"]
+role.save 
+
+role = Role.new
+role["character_name"] = "Bruce Wayne"
+role["movie_id"] = batman["id"]
+role["actor_id"] = christian["id"]
+role.save 
+
+role = Role.new
+role["character_name"] = "Ra's Al Ghul"
+role["movie_id"] = batman["id"]
+role["actor_id"] = liam["id"]
+role.save 
+
 
 #rails db:migrate to execute the migration tables
 
