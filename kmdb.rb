@@ -179,8 +179,12 @@ michael = Actor.find_by({"name" => "Michael Caine"})
 liam = Actor.find_by({"name" => "Liam Neeson"})
 katie = Actor.find_by({"name" => "Katie Holmes"})
 gary =  Actor.find_by({"name" => "Gary Oldman"})
-
-#you'll need to do this for the remaining actors 
+heath = Actor.find_by({"name" => "Heath Ledger"})
+aaron = Actor.find_by({"name" => "Aaron Eckhart"})
+maggie = Actor.find_by({"name" => "Maggie Gyllenhaal"})
+tom = Actor.find_by({"name" => "Tom Hardy"})
+jo =  Actor.find_by({"name" => "Joseph Gordon-Levitt"})
+anne =  Actor.find_by({"name" => "Anne Hathaway"})
 
 #Populate the Roles table 
 
@@ -191,9 +195,45 @@ role["actor_id"] = michael["id"]
 role.save 
 
 role = Role.new
+role["character_name"] = "Alfred"
+role["movie_id"] = knight["id"]
+role["actor_id"] = michael["id"]
+role.save 
+
+role = Role.new
 role["character_name"] = "Bruce Wayne"
 role["movie_id"] = batman["id"]
 role["actor_id"] = christian["id"]
+role.save 
+
+role = Role.new
+role["character_name"] = "Bruce Wayne"
+role["movie_id"] = knight["id"]
+role["actor_id"] = christian["id"]
+role.save 
+
+role = Role.new
+role["character_name"] = "Bruce Wayne"
+role["movie_id"] = knightrises["id"]
+role["actor_id"] = christian["id"]
+role.save 
+
+role = Role.new
+role["character_name"] = "Rachel Dawes"
+role["movie_id"] = batman["id"]
+role["actor_id"] = katie["id"]
+role.save 
+
+role = Role.new
+role["character_name"] = "Commissioner Gordon"
+role["movie_id"] = batman["id"]
+role["actor_id"] = gary["id"]
+role.save 
+
+role = Role.new
+role["character_name"] = "Commissioner Gordon"
+role["movie_id"] = knightrises["id"]
+role["actor_id"] = gary["id"]
 role.save 
 
 role = Role.new
@@ -202,11 +242,45 @@ role["movie_id"] = batman["id"]
 role["actor_id"] = liam["id"]
 role.save 
 
-#you'll need to do this for the remaining characters
+role = Role.new
+role["character_name"] = "Joker"
+role["movie_id"] = knight["id"]
+role["actor_id"] = heath["id"]
+role.save 
+
+role = Role.new
+role["character_name"] = "Harvey Dent"
+role["movie_id"] = knight["id"]
+role["actor_id"] = aaron["id"]
+role.save 
+
+role = Role.new
+role["character_name"] = "Rachel Dawes"
+role["movie_id"] = knight["id"]
+role["actor_id"] = maggie["id"]
+role.save 
+
+role = Role.new
+role["character_name"] = "Bane"
+role["movie_id"] = knightrises["id"]
+role["actor_id"] = tom["id"]
+role.save 
+
+role = Role.new
+role["character_name"] = "John Blake"
+role["movie_id"] = knightrises["id"]
+role["actor_id"] = jo["id"]
+role.save 
+
+role = Role.new
+role["character_name"] = "Selina Kyle"
+role["movie_id"] = knightrises["id"]
+role["actor_id"] = anne["id"]
+role.save 
+
 # how do I deal with a character appearing in more than one movie?
 
 # Query the movies data and loop through the results to display the movies output.
-# TODO!
 
 # Prints a header for the movies output & display Movies
 puts "Movies"
@@ -227,13 +301,12 @@ for movie in allbatmans
   puts "#{movie_name} #{year} #{rating} #{studio_name}"
 end
 
-
 ##{studio_name}
-# Prints a header for the cast output
-#puts ""
-#puts "Top Cast"
-#puts "========"
-#puts ""
+# Prints a header for the cast output & display Cast 
+puts ""
+puts "Top Cast"
+puts "========"
+puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
-# TODO!
+
