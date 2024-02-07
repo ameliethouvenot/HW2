@@ -278,10 +278,7 @@ role["movie_id"] = knightrises["id"]
 role["actor_id"] = anne["id"]
 role.save 
 
-# how do I deal with a character appearing in more than one movie?
-
 # Query the movies data and loop through the results to display the movies output.
-
 # Prints a header for the movies output & display Movies
 puts "Movies"
 puts "======"
@@ -290,18 +287,14 @@ puts ""
 allbatmans = Movie.all
 # loop through array of movie rows 
 for movie in allbatmans
-  # read the relevant columns from the movie row
   movie_name = movie["name"]
   year = movie["year_released"]
   rating = movie["rated"]
   studio = Studio.find_by({"id" => movie["studio_id"]})
   studio_name = studio["name"]
-
-  # display a string with the relevant columns
   puts "#{movie_name} #{year} #{rating} #{studio_name}"
 end
 
-##{studio_name}
 # Prints a header for the cast output & display Cast 
 puts ""
 puts "Top Cast"
