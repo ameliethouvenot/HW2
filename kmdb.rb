@@ -71,6 +71,9 @@
 # Use `Model.destroy_all` code.
 # TODO!
 
+rails generate model Movies 
+rails generate model 
+
 # Generate models and tables, according to the domain model.
 # TODO!
 
