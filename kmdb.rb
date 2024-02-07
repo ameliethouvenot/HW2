@@ -85,8 +85,7 @@ Role.destroy_all
 #rails generate model Actor 
 #rails generate model Role 
 
-# Insert data into the database that reflects the sample data shown above.
-# Do not use hard-coded foreign key IDs.
+# Insert data into the database that reflects the sample data shown above. Do not use hard-coded foreign key IDs.
 # TODO!
 
 #Populate Studio table 
@@ -140,8 +139,6 @@ actor = Actor.new
 actor["name"] = "Anne Hathaway"
 actor.save
 
-
-
 #Query to find the studio within the studio table 
 warner = Studio.find_by({"name" => "Warner Bros."})
 
@@ -167,6 +164,8 @@ movie["rated"] = "PG-13"
 movie["studio_id"] = warner["id"]
 movie.save 
 
+puts movie.inspect
+
 #Query to find a movie within the Movie Table 
 batman = Movie.find_by({"name" => "Batman Begins"})
 knight = Movie.find_by({"name" => "The Dark Knight"})
@@ -178,6 +177,8 @@ michael = Actor.find_by({"name" => "Michael Caine"})
 liam = Actor.find_by({"name" => "Liam Neeson"})
 katie = Actor.find_by({"name" => "Katie Holmes"})
 gary =  Actor.find_by({"name" => "Gary Oldman"})
+
+#you'll need to do this for the remaining actors 
 
 #Populate the Roles table 
 
@@ -199,22 +200,43 @@ role["movie_id"] = batman["id"]
 role["actor_id"] = liam["id"]
 role.save 
 
+#you'll need to do this for the remainig characters
 
 #rails db:migrate to execute the migration tables
 
-# Prints a header for the movies output
-puts "Movies"
-puts "======"
-puts ""
 
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
+# Prints a header for the movies output & display Movies
+puts "Movies"
+puts "======"
+puts ""
+
+#puts "Movies: #{Movie.all.count}"
+#puts "Actors: #{Actor.all.count}"
+#puts "Roles: #{Role.all.count}"
+
+allbatmans = Movie.all
+# loop through array of movie rows 
+for movie in allbatmans
+  # read the relevant columns from the movie row
+  movie_name = movie["name"]
+  year = movie["year_released"]
+  rating = movie["rated"]
+  studio = Studio.find_by({"id" => movie["studio_id"]})
+  studio_name = studio["name"]
+
+  # display a string with the relevant columns
+  puts "#{movie_name} #{year} #{rating} #{studio_name}"
+end
+
+##{studio_name}
 # Prints a header for the cast output
-puts ""
-puts "Top Cast"
-puts "========"
-puts ""
+#puts ""
+#puts "Top Cast"
+#puts "========"
+#puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
