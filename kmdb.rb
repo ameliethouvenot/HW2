@@ -309,17 +309,40 @@ puts "========"
 puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
-allroles = Role.all
+
+allbatmans = Movie.all
+
+for movie in allbatmans
+   movie_name = movie["name"]
+   movie_characters = Role.where({"movie_id" => movie["id"]})
+
+    for roles in movie_characters
+        character_name = roles["character_name"]
+        character_actors = Actor.where({"id" => roles["actor_id"]})
+
+        for actors in character_actors 
+            actor_name = actors["name"]
+            puts "#{movie_name} #{actor_name} #{character_name}"
+        end 
+
+    end     
+
+end 
+
+#Alternativaly, we can just loop through roles, but this does not yield a movie order from Batman to Dark Knight 
+#to Dark Knight Rises, since it loops through characters instead 
+
+#allroles = Role.all
 # loop through array of role rows 
-for role in allroles
+#for role in allroles
 
-  movie = Movie.find_by({"id" => role["movie_id"]})
-  movie_name = movie["name"]
+#  movie = Movie.find_by({"id" => role["movie_id"]})
+#  movie_name = movie["name"]
 
-  actor = Actor.find_by({"id" => role["actor_id"]})
-  actor_name = actor["name"]
+#  actor = Actor.find_by({"id" => role["actor_id"]})
+#  actor_name = actor["name"]
 
-  character_name = role["character_name"]
+#  character_name = role["character_name"]
 
-  puts "#{movie_name} #{actor_name} #{character_name}"
-end
+#  puts "#{movie_name} #{actor_name} #{character_name}"
+#end
