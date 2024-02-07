@@ -77,24 +77,26 @@ Actor.destroy_all
 Role.destroy_all 
 
 # Generate models and tables, according to the domain model.
-# TODO!
 
-#Run the following prompts in the terminal: 
+#I ran the following prompts in the terminal to do so: 
 #rails generate model Movie 
 #rails generate model Studio 
 #rails generate model Actor 
 #rails generate model Role 
 
-# Insert data into the database that reflects the sample data shown above. Do not use hard-coded foreign key IDs.
-# TODO!
 
-#Populate Studio table 
+#Then I ran the migration with this prompt in the terminate: rails db:migrate 
+#This was in order to execute the migration tables, so I could then start filling in data 
+
+# Insert data into the database that reflects the sample data shown above. Do not use hard-coded foreign key IDs.
+
+#I started by populating the Studio table 
 
 studio = Studio.new
 studio["name"] = "Warner Bros."
 studio.save
 
-#Populate the Actor table 
+#Then I populated the Actor table 
 actor = Actor.new 
 actor["name"] = "Christian Bale"
 actor.save
@@ -139,10 +141,10 @@ actor = Actor.new
 actor["name"] = "Anne Hathaway"
 actor.save
 
-#Query to find the studio within the studio table 
+#I created a query to find the studio name within the studio table 
 warner = Studio.find_by({"name" => "Warner Bros."})
 
-#Populate the Movie table 
+#I then populated the Movie table 
 movie = Movie.new
 movie["name"] = "Batman Begins"
 movie["year_released"] = "2005"
@@ -164,9 +166,9 @@ movie["rated"] = "PG-13"
 movie["studio_id"] = warner["id"]
 movie.save 
 
-puts movie.inspect
+#puts movie.inspect
 
-#Query to find a movie within the Movie Table 
+#I then queried to find a movie within the Movie Table 
 batman = Movie.find_by({"name" => "Batman Begins"})
 knight = Movie.find_by({"name" => "The Dark Knight"})
 knightrises = Movie.find_by({"name" => "The Dark Knight Rises"})
@@ -200,10 +202,8 @@ role["movie_id"] = batman["id"]
 role["actor_id"] = liam["id"]
 role.save 
 
-#you'll need to do this for the remainig characters
-
-#rails db:migrate to execute the migration tables
-
+#you'll need to do this for the remaining characters
+# how do I deal with a character appearing in more than one movie?
 
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
@@ -212,10 +212,6 @@ role.save
 puts "Movies"
 puts "======"
 puts ""
-
-#puts "Movies: #{Movie.all.count}"
-#puts "Actors: #{Actor.all.count}"
-#puts "Roles: #{Role.all.count}"
 
 allbatmans = Movie.all
 # loop through array of movie rows 
@@ -230,6 +226,7 @@ for movie in allbatmans
   # display a string with the relevant columns
   puts "#{movie_name} #{year} #{rating} #{studio_name}"
 end
+
 
 ##{studio_name}
 # Prints a header for the cast output
